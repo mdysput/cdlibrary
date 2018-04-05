@@ -3,6 +3,7 @@ package pl.dominisz.cdlibrary;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +24,13 @@ public class CD {
     private int discCount;
 
     public int getTotalTime() {
-        return 0;
+        if (tracks != null) {
+            return tracks.stream()
+                    .mapToInt(track -> track.getTime())
+                    .sum();
+        } else {
+            return 0;
+        }
     }
 
 }
