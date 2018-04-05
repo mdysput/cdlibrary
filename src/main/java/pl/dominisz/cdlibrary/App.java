@@ -6,11 +6,24 @@ package pl.dominisz.cdlibrary;
  */
 public class App {
 
-    public static void main(String[] args) {
-        CDLibrary cdLibrary = new CDLibrary();
+    private CDLibrary cdLibrary = new CDLibrary();
+
+    public void showMainMenu() {
         cdLibrary.loadFromFile();
-        cdLibrary.showMainMenu();
+        boolean exit = false;
+        while (!exit) {
+            System.out.println("1. Add new CD");
+            System.out.println("2. Show all CDs");
+            System.out.println("3. Exit");
+
+
+        }
         cdLibrary.saveToFile();
+    }
+
+    public static void main(String[] args) {
+        App app = new App();
+        app.showMainMenu();
     }
 
 }
