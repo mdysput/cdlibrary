@@ -55,6 +55,8 @@ public class App {
         boolean original = "yes".equals(scanner.nextLine());
         System.out.println("Disc count:");
         int discCount = Integer.parseInt(scanner.nextLine());
+        //create CD
+        //add to CDLibrary
     }
 
     private List<Track> readTracks() {
@@ -62,7 +64,13 @@ public class App {
     }
 
     private Genre readGenre() {
-        return null;
+        Genre[] genres = Genre.values();
+        for (int i = 0; i < genres.length; i++) {
+            System.out.println((i + 1) + " " + genres[i].getDescription());
+        }
+        System.out.println("Choose number:");
+        int number = Integer.parseInt(scanner.nextLine());
+        return genres[number - 1];
     }
 
     public static void main(String[] args) {
