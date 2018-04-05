@@ -1,5 +1,7 @@
 package pl.dominisz.cdlibrary;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -18,7 +20,7 @@ public class App {
             System.out.println("1. Add new CD");
             System.out.println("2. Show all CDs");
             System.out.println("3. Exit");
-            int option = scanner.nextInt();
+            int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
                     addNewCD();
@@ -26,6 +28,8 @@ public class App {
                 case 2:
                     showAllCDs();
                     break;
+                default:
+                    exit = true;
             }
         }
         cdLibrary.saveToFile();
@@ -36,7 +40,29 @@ public class App {
     }
 
     private void addNewCD() {
+        System.out.println("Enter CD info");
+        System.out.println("Title:");
+        String title = scanner.nextLine();
+        System.out.println("Artist:");
+        String artist = scanner.nextLine();
+        System.out.println("Release year:");
+        int releaseYear = Integer.parseInt(scanner.nextLine());
+        System.out.println("Producer:");
+        String producer = scanner.nextLine();
+        Genre genre = readGenre();
+        List<Track> tracks = readTracks();
+        System.out.println("Is original (yes/no):");
+        boolean original = "yes".equals(scanner.nextLine());
+        System.out.println("Disc count:");
+        int discCount = Integer.parseInt(scanner.nextLine());
+    }
 
+    private List<Track> readTracks() {
+        return new ArrayList<>();
+    }
+
+    private Genre readGenre() {
+        return null;
     }
 
     public static void main(String[] args) {

@@ -23,4 +23,31 @@ public class CDLibrary {
 
     }
 
+    public List<CD> getCDs() {
+        return CDs;
+    }
+
+    //znajduje płyty podanego artysty
+    public List<CD> findByArtist(String artist) {
+        return new ArrayList<>();
+    }
+
+    //znajduje płyty o tytule zawierającym podany tekst
+    public List<CD> findCDByTitle(String title) {
+        return new ArrayList<>();
+    }
+
+    public List<Track> findTrackByTitle(String title) {
+        return new ArrayList<>();
+    }
+
+    public List<CD> findCDByTrackTitle(String title) {
+        return new ArrayList<>();
+    }
+
+    //znajduje płyty
+    public List<CD> findByGenre(Genre genre) {
+        return new ArrayList<>();
+    }
+
 }
