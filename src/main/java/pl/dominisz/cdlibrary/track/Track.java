@@ -18,4 +18,11 @@ public class Track {
     private String artist;
     private Genre genre;
 
+    @Override
+    public String toString() {
+        return "Title: " + title +
+                ", time: " + time +
+                ", artist: " + artist +
+                ", genre: " + genre.getDescription();
+    }
 }
