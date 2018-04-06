@@ -35,4 +35,21 @@ public class CD {
         }
     }
 
+    @Override
+    public String toString() {
+        String result = "Title: " + title +
+                ", artist: " + artist +
+                ", release year: " + releaseYear +
+                ", producer: " + producer +
+                ", genre: " + genre.getDescription() + "\n";
+        if (original) {
+            result += "CD is original\n";
+        }
+        result += "disc count: " + discCount +
+                "\nTracks:\n";
+        for (int i = 0; i < tracks.size(); i++) {
+            result += (i + 1) + " " + tracks.get(i).toString() + "\n";
+        }
+        return result;
+    }
 }
