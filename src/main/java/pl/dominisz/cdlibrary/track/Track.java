@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import pl.dominisz.cdlibrary.Genre;
+import pl.dominisz.cdlibrary.TimeUtil;
 
 /**
  * http://dominisz.pl
@@ -21,7 +22,7 @@ public class Track {
     @Override
     public String toString() {
         return "Title: " + title +
-                ", time: " + time +
+                ", time: " + TimeUtil.intTimeToString(time) +
                 ", artist: " + artist +
                 ", genre: " + genre.getDescription();
     }
