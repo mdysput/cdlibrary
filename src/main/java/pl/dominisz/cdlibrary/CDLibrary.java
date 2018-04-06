@@ -8,6 +8,8 @@ import pl.dominisz.cdlibrary.track.TrackBuilder;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * http://dominisz.pl
@@ -104,14 +106,22 @@ public class CDLibrary {
                 .build();
     }
 
-
     public List<CD> getCDs() {
         return CDs;
     }
 
     //znajduje płyty podanego artysty
     public List<CD> findByArtist(String artist) {
-        return new ArrayList<>();
+        String lowerCaseArtist = artist.toLowerCase();
+        return CDs.stream()
+                .filter(cd -> cd.getArtist().toLowerCase().contains(lowerCaseArtist))
+                .collect(Collectors.toList());
+    }
+
+    public Set<String> findAllArtists() {
+        return CDs.stream()
+                .map(cd -> cd.getArtist())
+                .collect(Collectors.toSet());
     }
 
     //znajduje płyty o tytule zawierającym podany tekst
