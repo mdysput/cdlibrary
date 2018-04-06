@@ -1,7 +1,9 @@
 package pl.dominisz.cdlibrary;
 
+import pl.dominisz.cdlibrary.menu.CDDisplay;
 import pl.dominisz.cdlibrary.menu.CDReader;
 
+import java.awt.*;
 import java.util.Scanner;
 
 /**
@@ -27,17 +29,13 @@ public class App {
                     newCD.addNewCD();
                     break;
                 case 2:
-                    showAllCDs();
+                    CDDisplay.show(cdLibrary.getCDs());
                     break;
                 default:
                     exit = true;
             }
         }
         cdLibrary.saveToFile();
-    }
-
-    private void showAllCDs() {
-
     }
 
     public static void main(String[] args) {
