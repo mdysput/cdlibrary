@@ -1,4 +1,7 @@
-package pl.dominisz.cdlibrary;
+package pl.dominisz.cdlibrary.cd;
+
+import pl.dominisz.cdlibrary.Genre;
+import pl.dominisz.cdlibrary.track.Track;
 
 import java.util.ArrayList;
 import java.util.List;
