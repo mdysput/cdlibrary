@@ -2,7 +2,10 @@ package pl.dominisz.cdlibrary.menu;
 
 import pl.dominisz.cdlibrary.CDLibrary;
 import pl.dominisz.cdlibrary.Genre;
+import pl.dominisz.cdlibrary.cd.CD;
+import pl.dominisz.cdlibrary.cd.CDBuilder;
 import pl.dominisz.cdlibrary.track.Track;
+import pl.dominisz.cdlibrary.track.TrackBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +30,7 @@ public class CDReader {
         System.out.println("Title:");
         String title = scanner.nextLine();
         System.out.println("Artist:");
-        String artist = scanner.nextLine();
+        String author = scanner.nextLine();
         System.out.println("Release year:");
         int releaseYear = Integer.parseInt(scanner.nextLine());
         System.out.println("Producer:");
@@ -38,12 +41,44 @@ public class CDReader {
         boolean original = "yes".equals(scanner.nextLine());
         System.out.println("Disc count:");
         int discCount = Integer.parseInt(scanner.nextLine());
-        //create CD
-        //add to CDLibrary
+        CD cd = new CDBuilder()
+                .setTitle(title)
+                .setAuthor(author)
+                .setReleaseYear(releaseYear)
+                .setProducer(producer)
+                .setGenre(genre)
+                .setIsOriginal(original)
+                .setDiscCount(discCount)
+                .setTracks(tracks)
+                .build();
+        cdLibrary.add(cd);
     }
 
     private List<Track> readTracks() {
-        return new ArrayList<>();
+        System.out.println("Enter track count:");
+        int count = Integer.parseInt(scanner.nextLine());
+        List<Track> tracks = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            tracks.add(readTrack());
+        }
+        return tracks;
+    }
+
+    private Track readTrack() {
+        System.out.println("Enter track info:");
+        System.out.println("Title:");
+        String title = scanner.nextLine();
+        System.out.println("Time (in seconds):");
+        int time = Integer.parseInt(scanner.nextLine());
+        System.out.println("Artist:");
+        String artist = scanner.nextLine();
+        Genre genre = readGenre();
+        return new TrackBuilder()
+                .setTitle(title)
+                .setTime(time)
+                .setArtist(artist)
+                .setGenre(genre)
+                .build();
     }
 
     private Genre readGenre() {
