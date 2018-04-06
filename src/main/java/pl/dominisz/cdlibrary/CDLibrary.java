@@ -1,10 +1,11 @@
 package pl.dominisz.cdlibrary;
 
 import pl.dominisz.cdlibrary.cd.CD;
+import pl.dominisz.cdlibrary.cd.CDBuilder;
 import pl.dominisz.cdlibrary.track.Track;
+import pl.dominisz.cdlibrary.track.TrackBuilder;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,8 +58,52 @@ public class CDLibrary {
     }
 
     public void loadFromFile() {
-
+        try {
+            BufferedReader bufferedReader =
+                    new BufferedReader(new FileReader(FILENAME));
+            String line = bufferedReader.readLine();
+            int count = Integer.parseInt(line);
+            for (int i = 0; i < count; i++) {
+                loadCDFromFile(bufferedReader);
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println("Nie udało się odczytać pliku " + FILENAME);
+        }
     }
+
+    private void loadCDFromFile(BufferedReader bufferedReader) throws IOException {
+        CD cd = new CDBuilder()
+                .setTitle(bufferedReader.readLine())
+                .setAuthor(bufferedReader.readLine())
+                .setReleaseYear(Integer.parseInt(bufferedReader.readLine()))
+                .setProducer(bufferedReader.readLine())
+                .setGenre(Genre.valueOf(bufferedReader.readLine()))
+                .setIsOriginal(Boolean.valueOf(bufferedReader.readLine()))
+                .setDiscCount(Integer.parseInt(bufferedReader.readLine()))
+                .setTracks(loadTracksFromFile(bufferedReader))
+                .build();
+        CDs.add(cd);
+    }
+
+    private List<Track> loadTracksFromFile(BufferedReader bufferedReader) throws IOException {
+        int count = Integer.parseInt(bufferedReader.readLine());
+        List<Track> tracks = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            tracks.add(loadTrackFromFile(bufferedReader));
+        }
+        return tracks;
+    }
+
+    private Track loadTrackFromFile(BufferedReader bufferedReader) throws IOException {
+        return new TrackBuilder()
+                .setTitle(bufferedReader.readLine())
+                .setTime(Integer.parseInt(bufferedReader.readLine()))
+                .setArtist(bufferedReader.readLine())
+                .setGenre(Genre.valueOf(bufferedReader.readLine()))
+                .build();
+    }
+
 
     public List<CD> getCDs() {
         return CDs;
