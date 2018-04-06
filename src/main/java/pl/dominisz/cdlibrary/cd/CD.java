@@ -3,6 +3,7 @@ package pl.dominisz.cdlibrary.cd;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import pl.dominisz.cdlibrary.Genre;
+import pl.dominisz.cdlibrary.TimeUtil;
 import pl.dominisz.cdlibrary.track.Track;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class CD {
                 ", artist: " + artist +
                 ", release year: " + releaseYear +
                 ", producer: " + producer +
+                ", total time: " + TimeUtil.intTimeToString(getTotalTime()) +
                 ", genre: " + genre.getDescription() + "\n";
         if (original) {
             result += "CD is original\n";

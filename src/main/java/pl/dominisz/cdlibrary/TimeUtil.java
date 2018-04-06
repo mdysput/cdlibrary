@@ -7,7 +7,15 @@ package pl.dominisz.cdlibrary;
 public class TimeUtil {
 
     public static String intTimeToString(int seconds) {
-        return "00:00:00";
+        int hour = seconds / 3600;
+        int minutes = seconds / 60;
+        int second = seconds % 60;
+
+        if (hour > 0) {
+            return String.format("%02d:%02d:%02d", hour, minutes, second);
+        } else {
+            return String.format("%02d:%02d", minutes, second);
+        }
     }
 
 }
