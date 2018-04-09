@@ -13,25 +13,25 @@ import pl.dominisz.cdlibrary.track.TrackBuilder;
  */
 public class CDLibraryTest {
 
+    private static final String TRACK1 = "title1;100;artist1;RAP";
+    private static final String TRACK2 = "title2;200;artist2;RAP";
+    private static final String TRACK3 = "title3;300;artist3;RAP";
+    private static final String TRACK4 = "title4;400;artist4;RAP";
+
+    private static final String CD1 = "title1;artist1;2000;producer1;RAP;true;1";
+    private static final String CD2 = "title2;artist2;2010;producer2;ROCK;false;2";
+
     CDLibrary cdLibrary;
-
-    String track1 = "title1;100;artist1;RAP";
-    String track2 = "title2;200;artist2;RAP";
-    String track3 = "title3;300;artist3;RAP";
-    String track4 = "title4;400;artist4;RAP";
-
-    String cd1string = "title1;artist1;2000;producer1;RAP;true;1";
-    String cd2string = "title2;artist2;2010;producer2;RAP;false;2";
 
     @BeforeEach
     void setup() {
-        CD cd1 = createCD(cd1string);
-        cd1.getTracks().add(createTrack(track1));
-        cd1.getTracks().add(createTrack(track2));
+        CD cd1 = createCD(CD1);
+        cd1.getTracks().add(createTrack(TRACK1));
+        cd1.getTracks().add(createTrack(TRACK2));
 
-        CD cd2 = createCD(cd2string);
-        cd1.getTracks().add(createTrack(track3));
-        cd1.getTracks().add(createTrack(track4));
+        CD cd2 = createCD(CD2);
+        cd2.getTracks().add(createTrack(TRACK3));
+        cd2.getTracks().add(createTrack(TRACK4));
 
         cdLibrary = new CDLibrary();
         cdLibrary.add(cd1);
