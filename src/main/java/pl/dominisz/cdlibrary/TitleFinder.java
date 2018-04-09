@@ -27,8 +27,11 @@ public class TitleFinder {
     }
 
     public void findTracks() {
-        //wyszukać utwory
-        //wyświetlić
+        System.out.println("Enter track title:");
+        String title = scanner.nextLine();
+        System.out.println("Tracks with title containing " + title);
+        cdLibrary.findTrackByTitle(title)
+                .forEach(track -> System.out.println(track));
     }
 
 }
