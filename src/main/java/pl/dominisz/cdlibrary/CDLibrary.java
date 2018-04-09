@@ -17,24 +17,22 @@ import java.util.stream.Collectors;
  */
 public class CDLibrary {
 
-    private static final String FILENAME = "cdlibrary.txt";
-
     private List<CD> CDs = new ArrayList<>();
 
     public void add(CD cd) {
         CDs.add(cd);
     }
 
-    public void saveToFile() {
+    public void saveToFile(String filename) {
         try {
-            PrintWriter out = new PrintWriter(FILENAME);
+            PrintWriter out = new PrintWriter(filename);
             out.println(CDs.size());
             for (CD cd : CDs) {
                 saveCDToFile(out, cd);
             }
             out.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Nie udało się zapisać pliku " + FILENAME);
+            System.out.println("Nie udało się zapisać pliku " + filename);
         }
     }
 
@@ -59,10 +57,10 @@ public class CDLibrary {
         out.println(track.getGenre());
     }
 
-    public void loadFromFile() {
+    public void loadFromFile(String filename) {
         try {
             BufferedReader bufferedReader =
-                    new BufferedReader(new FileReader(FILENAME));
+                    new BufferedReader(new FileReader(filename));
             String line = bufferedReader.readLine();
             int count = Integer.parseInt(line);
             for (int i = 0; i < count; i++) {
@@ -70,7 +68,7 @@ public class CDLibrary {
             }
             bufferedReader.close();
         } catch (IOException e) {
-            System.out.println("Nie udało się odczytać pliku " + FILENAME);
+            System.out.println("Nie udało się odczytać pliku " + filename);
         }
     }
 
