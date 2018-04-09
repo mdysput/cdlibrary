@@ -1,6 +1,5 @@
 package pl.dominisz.cdlibrary;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.dominisz.cdlibrary.cd.CD;
@@ -9,6 +8,7 @@ import pl.dominisz.cdlibrary.track.Track;
 import pl.dominisz.cdlibrary.track.TrackBuilder;
 
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -91,6 +91,31 @@ public class CDLibraryTest {
     @Test
     void findCDByTrackTitleShouldReturnEmptyList() {
         assertTrue(cdLibrary.findCDByTrackTitle("none").isEmpty());
+    }
+
+    @Test
+    void findTrackByTitleShouldReturnOneTrack() {
+        List<Track> actualTracks = cdLibrary.findTrackByTitle("tle3");
+        assertEquals(1, actualTracks.size());
+        Track actualTrack = actualTracks.get(0);
+        assertTrue(actualTrack.getTitle().toLowerCase().contains("tle3"));
+    }
+
+    @Test
+    void findTrackByTitleShouldReturnEmptyList() {
+
+    }
+
+    //TODO zrobić testy findCDByTitle
+
+    //TODO zrobić testy findByArtist
+
+    @Test
+    void findAllArtistsShouldReturnTwoArtists() {
+        Set<String> actualArtists = cdLibrary.findAllArtists();
+        assertEquals(2, actualArtists.size());
+        assertTrue(actualArtists.contains("artist1"));
+        assertTrue(actualArtists.contains("artist2"));
     }
 
 }

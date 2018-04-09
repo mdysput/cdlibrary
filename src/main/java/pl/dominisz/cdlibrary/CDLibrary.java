@@ -132,7 +132,6 @@ public class CDLibrary {
                 .collect(Collectors.toList());
     }
 
-    //TODO użyć stream
     public List<Track> findTrackByTitle(String title) {
         String lowercaseTitle = title.toLowerCase();
         return CDs.stream()
