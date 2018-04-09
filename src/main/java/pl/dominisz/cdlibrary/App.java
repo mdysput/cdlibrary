@@ -26,7 +26,8 @@ public class App {
             System.out.println("2. Show all CDs");
             System.out.println("3. Find CDs by artist");
             System.out.println("4. Show all artists");
-            System.out.println("5. Find CD by title");
+            System.out.println("5. Find CDs by title");
+            System.out.println("5. Find tracks by title");
             System.out.println("9. Exit");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
@@ -44,6 +45,9 @@ public class App {
                     break;
                 case 5:
                     titleFinder.findCDs();
+                    break;
+                case 6:
+                    titleFinder.findTracks();
                     break;
                 default:
                     exit = true;
