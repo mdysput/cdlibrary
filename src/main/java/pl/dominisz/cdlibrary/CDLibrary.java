@@ -134,25 +134,27 @@ public class CDLibrary {
 
     //TODO użyć stream
     public List<Track> findTrackByTitle(String title) {
-        title = title.toLowerCase();
-        List<Track> tracks = new ArrayList<>();
-        for (CD cd : CDs) {
-            for (Track track : cd.getTracks()) {
-                if (track.getTitle().contains(title)) {
-                    tracks.add(track);
-                }
-            }
-        }
-        return tracks;
+        String lowercaseTitle = title.toLowerCase();
+        return CDs.stream()
+                .flatMap(cd -> cd.getTracks().stream()
+                        .filter(track -> track.getTitle().contains(lowercaseTitle)))
+                .collect(Collectors.toList());
     }
 
     public List<CD> findCDByTrackTitle(String title) {
-        return new ArrayList<>();
+        String lowercaseTitle = title.toLowerCase();
+        return CDs.stream()
+                .filter(cd -> cd.getTracks().stream()
+                        .anyMatch(track ->
+                                track.getTitle().toLowerCase().contains(lowercaseTitle)))
+                .collect(Collectors.toList());
     }
 
     //znajduje płyty
     public List<CD> findByGenre(Genre genre) {
-        return new ArrayList<>();
+        return CDs.stream()
+                .filter(cd -> cd.getGenre().equals(genre))
+                .collect(Collectors.toList());
     }
 
 }
