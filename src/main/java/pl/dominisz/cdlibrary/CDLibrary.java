@@ -77,7 +77,7 @@ public class CDLibrary {
     private void loadCDFromFile(BufferedReader bufferedReader) throws IOException {
         CD cd = new CDBuilder()
                 .setTitle(bufferedReader.readLine())
-                .setAuthor(bufferedReader.readLine())
+                .setArtist(bufferedReader.readLine())
                 .setReleaseYear(Integer.parseInt(bufferedReader.readLine()))
                 .setProducer(bufferedReader.readLine())
                 .setGenre(Genre.valueOf(bufferedReader.readLine()))

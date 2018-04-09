@@ -43,7 +43,7 @@ public class CDReader {
         int discCount = Integer.parseInt(scanner.nextLine());
         CD cd = new CDBuilder()
                 .setTitle(title)
-                .setAuthor(author)
+                .setArtist(author)
                 .setReleaseYear(releaseYear)
                 .setProducer(producer)
                 .setGenre(genre)

@@ -13,7 +13,7 @@ import java.util.List;
 public class CDBuilder {
 
     private String title;
-    private String author;
+    private String artist;
     private int releaseYear;
     private String producer;
     private Genre genre;
@@ -26,8 +26,8 @@ public class CDBuilder {
         return this;
     }
 
-    public CDBuilder setAuthor(String author) {
-        this.author = author;
+    public CDBuilder setArtist(String artist) {
+        this.artist = artist;
         return this;
     }
 
@@ -74,6 +74,6 @@ public class CDBuilder {
     }
 
     public CD build() {
-        return new CD(title, author, releaseYear, producer, genre, tracks, isOriginal, discCount);
+        return new CD(title, artist, releaseYear, producer, genre, tracks, isOriginal, discCount);
     }
 }
