@@ -19,7 +19,7 @@ public class CDBuilder {
     private Genre genre;
     private boolean isOriginal;
     private int discCount;
-    private List<Track> tracks;
+    private List<Track> tracks = new ArrayList<>();
 
     public CDBuilder setTitle(String title) {
         this.title = title;
@@ -57,19 +57,12 @@ public class CDBuilder {
     }
 
     public CDBuilder setTrack(Track track) {
-        if (tracks == null) {
-            this.tracks = new ArrayList<>();
-        }
         tracks.add(track);
         return this;
     }
 
     public CDBuilder setTracks(List<Track> tracks) {
-        if (this.tracks == null) {
-            this.tracks = tracks;
-        } else {
-            this.tracks.addAll(tracks);
-        }
+        this.tracks.addAll(tracks);
         return this;
     }
 
