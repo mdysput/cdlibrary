@@ -1,11 +1,17 @@
 package pl.dominisz.cdlibrary;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.dominisz.cdlibrary.cd.CD;
 import pl.dominisz.cdlibrary.cd.CDBuilder;
 import pl.dominisz.cdlibrary.track.Track;
 import pl.dominisz.cdlibrary.track.TrackBuilder;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * http://dominisz.pl
@@ -21,7 +27,7 @@ public class CDLibraryTest {
     private static final String CD1 = "title1;artist1;2000;producer1;RAP;true;1";
     private static final String CD2 = "title2;artist2;2010;producer2;ROCK;false;2";
 
-    CDLibrary cdLibrary;
+    private CDLibrary cdLibrary;
 
     @BeforeEach
     void setup() {
@@ -62,8 +68,29 @@ public class CDLibraryTest {
     }
 
     @Test
-    void testFindByGenre() {
+    void findByGenreShouldReturnOneCD() {
+        List<CD> result = cdLibrary.findByGenre(Genre.RAP);
+        assertEquals(1, result.size());
+        assertEquals(Genre.RAP, result.get(0).getGenre());
+    }
 
+    @Test
+    void findByGenreShouldReturnEmptyList() {
+        List<CD> result = cdLibrary.findByGenre(Genre.BENGA);
+        assertEquals(0, result.size());
+    }
+
+    @Test
+    void findCDByTrackTitleShouldReturnOneCD() {
+        List<CD> result = cdLibrary.findCDByTrackTitle("tle3");
+        assertEquals(1, result.size());
+        assertTrue(result.get(0).getTracks().stream()
+            .anyMatch(track -> track.getTitle().toLowerCase().contains("tle3")));
+    }
+
+    @Test
+    void findCDByTrackTitleShouldReturnEmptyList() {
+        assertTrue(cdLibrary.findCDByTrackTitle("none").isEmpty());
     }
 
 }
