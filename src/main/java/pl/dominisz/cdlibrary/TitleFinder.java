@@ -19,11 +19,16 @@ public class TitleFinder {
     }
 
 
-    public void findCD() {
+    public void findCDs() {
         System.out.println("Enter CD title:");
         String title = scanner.nextLine();
         System.out.println("CDs with title containing " + title);
         CDDisplay.show(cdLibrary.findCDByTitle(title));
+    }
+
+    public void findTracks() {
+        //wyszukać utwory
+        //wyświetlić
     }
 
 }

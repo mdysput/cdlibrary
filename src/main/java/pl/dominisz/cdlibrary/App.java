@@ -43,7 +43,7 @@ public class App {
                     artistFinder.findAllArtists();
                     break;
                 case 5:
-                    titleFinder.findCD();
+                    titleFinder.findCDs();
                     break;
                 default:
                     exit = true;

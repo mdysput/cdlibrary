@@ -132,8 +132,18 @@ public class CDLibrary {
                 .collect(Collectors.toList());
     }
 
+    //TODO użyć stream
     public List<Track> findTrackByTitle(String title) {
-        return new ArrayList<>();
+        title = title.toLowerCase();
+        List<Track> tracks = new ArrayList<>();
+        for (CD cd : CDs) {
+            for (Track track : cd.getTracks()) {
+                if (track.getTitle().contains(title)) {
+                    tracks.add(track);
+                }
+            }
+        }
+        return tracks;
     }
 
     public List<CD> findCDByTrackTitle(String title) {
