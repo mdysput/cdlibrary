@@ -126,7 +126,10 @@ public class CDLibrary {
 
     //znajduje płyty o tytule zawierającym podany tekst
     public List<CD> findCDByTitle(String title) {
-        return new ArrayList<>();
+        String lowercaseTitle = title.toLowerCase();
+        return CDs.stream()
+                .filter(cd -> cd.getTitle().toLowerCase().contains(lowercaseTitle))
+                .collect(Collectors.toList());
     }
 
     public List<Track> findTrackByTitle(String title) {

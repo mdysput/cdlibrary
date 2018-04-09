@@ -15,15 +15,18 @@ public class App {
     private Scanner scanner = new Scanner(System.in);
     private CDReader cdReader = new CDReader(cdLibrary, scanner);
     private ArtistFinder artistFinder = new ArtistFinder(cdLibrary, scanner);
+    private TitleFinder titleFinder = new TitleFinder(cdLibrary, scanner);
 
     public void showMainMenu() {
         cdLibrary.loadFromFile();
         boolean exit = false;
         while (!exit) {
+            System.out.println("Main menu:");
             System.out.println("1. Add new CD");
             System.out.println("2. Show all CDs");
             System.out.println("3. Find CDs by artist");
             System.out.println("4. Show all artists");
+            System.out.println("5. Find CD by title");
             System.out.println("5. Exit");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
@@ -39,6 +42,8 @@ public class App {
                 case 4:
                     artistFinder.findAllArtists();
                     break;
+                case 5:
+                    titleFinder.findCD();
                 default:
                     exit = true;
             }
