@@ -34,7 +34,10 @@ public class App {
                     CDDisplay.show(cdLibrary.getCDs());
                     break;
                 case 3:
-                    artistFinder.find();
+                    artistFinder.findByArtist();
+                    break;
+                case 4:
+                    artistFinder.findAllArtists();
                     break;
                 default:
                     exit = true;
