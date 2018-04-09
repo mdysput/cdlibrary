@@ -27,7 +27,7 @@ public class App {
             System.out.println("3. Find CDs by artist");
             System.out.println("4. Show all artists");
             System.out.println("5. Find CD by title");
-            System.out.println("5. Exit");
+            System.out.println("9. Exit");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
@@ -44,6 +44,7 @@ public class App {
                     break;
                 case 5:
                     titleFinder.findCD();
+                    break;
                 default:
                     exit = true;
             }
