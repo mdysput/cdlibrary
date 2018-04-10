@@ -1,5 +1,6 @@
 package pl.dominisz.cdlibrary;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.dominisz.cdlibrary.cd.CD;
@@ -7,6 +8,8 @@ import pl.dominisz.cdlibrary.cd.CDBuilder;
 import pl.dominisz.cdlibrary.track.Track;
 import pl.dominisz.cdlibrary.track.TrackBuilder;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
@@ -127,6 +130,15 @@ public class CDLibraryTest {
         for (int i = 0; i < cdLibrary.getCDs().size(); i++) {
             assertEquals(cdLibrary.getCDs().get(i), libraryFromFile.getCDs().get(i));
         }
+    }
+
+    @Test
+    void testSaveToFile() throws IOException {
+        String directoryPath = this.getClass().getResource("/").getPath();
+        cdLibrary.saveToFile(directoryPath + "savedlibrary.txt");
+        File testFile = new File(directoryPath + "testlibrary.txt");
+        File savedFile = new File(directoryPath + "savedlibrary.txt");
+        assertTrue(FileUtils.contentEquals(testFile, savedFile));
     }
 
 }
