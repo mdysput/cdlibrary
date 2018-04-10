@@ -66,7 +66,9 @@ public class CDBuilder {
         return this;
     }
 
+    //TODO setGenre, setGenres
+
     public CD build() {
-        return new CD(title, artist, releaseYear, producer, genre, tracks, isOriginal, discCount);
+        return new CD(title, artist, releaseYear, producer, tracks, isOriginal, discCount);
     }
 }

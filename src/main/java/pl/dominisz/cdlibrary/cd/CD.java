@@ -8,7 +8,9 @@ import pl.dominisz.cdlibrary.TimeUtil;
 import pl.dominisz.cdlibrary.track.Track;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * http://dominisz.pl
@@ -43,8 +45,8 @@ public class CD {
                 ", artist: " + artist +
                 ", release year: " + releaseYear +
                 ", producer: " + producer +
-                ", total time: " + TimeUtil.intTimeToString(getTotalTime()) +
-                ", genre: " + genre.getDescription() + "\n";
+                ", total time: " + TimeUtil.intTimeToString(getTotalTime());
+                //TODO ", genre: " + genre.getDescription() + "\n";
         if (original) {
             result += "CD is original\n";
         }
@@ -54,5 +56,9 @@ public class CD {
             result += (i + 1) + " " + tracks.get(i).toString() + "\n";
         }
         return result;
+    }
+
+    public Set<Genre> getGenres() {
+        return new HashSet<>();
     }
 }

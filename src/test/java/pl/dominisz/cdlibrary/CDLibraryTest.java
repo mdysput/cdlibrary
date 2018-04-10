@@ -74,7 +74,7 @@ public class CDLibraryTest {
     void findByGenreShouldReturnOneCD() {
         List<CD> result = cdLibrary.findByGenre(Genre.RAP);
         assertEquals(1, result.size());
-        assertEquals(Genre.RAP, result.get(0).getGenre());
+        assertTrue(result.get(0).getGenres().contains(Genre.RAP));
     }
 
     @Test

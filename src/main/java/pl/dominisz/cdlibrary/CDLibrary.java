@@ -42,7 +42,6 @@ public class CDLibrary {
         out.println(cd.getArtist());
         out.println(cd.getReleaseYear());
         out.println(cd.getProducer());
-        out.println(cd.getGenre());
         out.println(cd.isOriginal());
         out.println(cd.getDiscCount());
         out.println(cd.getTracks().size());
@@ -151,7 +150,7 @@ public class CDLibrary {
     //znajduje płyty
     public List<CD> findByGenre(Genre genre) {
         return CDs.stream()
-                .filter(cd -> cd.getGenre().equals(genre))
+                .filter(cd -> cd.getGenres().contains(genre))
                 .collect(Collectors.toList());
     }
 
