@@ -54,7 +54,7 @@ public class CDLibrary {
         out.println(track.getTitle());
         out.println(track.getTime());
         out.println(track.getArtist());
-        out.println(track.getGenre());
+        out.println(track.getGenres());
     }
 
     public void loadFromFile(String filename) {
