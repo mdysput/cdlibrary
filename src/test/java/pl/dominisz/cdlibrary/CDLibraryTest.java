@@ -141,4 +141,14 @@ public class CDLibraryTest {
         assertTrue(FileUtils.contentEquals(testFile, savedFile));
     }
 
+    @Test
+    void testAddCD() {
+        CDLibrary newLibrary = new CDLibrary();
+        assertTrue(newLibrary.getCDs().isEmpty());
+        CD newCD = createCD(CD1);
+        newLibrary.add(newCD);
+        assertEquals(1, newLibrary.getCDs().size());
+        assertEquals(newCD, newLibrary.getCDs().get(0));
+    }
+
 }
