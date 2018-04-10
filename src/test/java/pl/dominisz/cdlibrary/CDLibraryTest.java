@@ -123,7 +123,10 @@ public class CDLibraryTest {
         CDLibrary libraryFromFile = new CDLibrary();
         String path = this.getClass().getResource("/testlibrary.txt").getPath();
         libraryFromFile.loadFromFile(path);
-        assertEquals(cdLibrary, libraryFromFile);
+        assertEquals(cdLibrary.getCDs().size(), libraryFromFile.getCDs().size());
+        for (int i = 0; i < cdLibrary.getCDs().size(); i++) {
+            assertEquals(cdLibrary.getCDs().get(i), libraryFromFile.getCDs().get(i));
+        }
     }
 
 }

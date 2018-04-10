@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
  * http://dominisz.pl
  * 05.04.2018
  */
-@EqualsAndHashCode
 public class CDLibrary {
 
     private List<CD> CDs = new ArrayList<>();
