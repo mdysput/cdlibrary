@@ -1,5 +1,6 @@
 package pl.dominisz.cdlibrary;
 
+import lombok.EqualsAndHashCode;
 import pl.dominisz.cdlibrary.cd.CD;
 import pl.dominisz.cdlibrary.cd.CDBuilder;
 import pl.dominisz.cdlibrary.track.Track;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  * http://dominisz.pl
  * 05.04.2018
  */
+@EqualsAndHashCode
 public class CDLibrary {
 
     private List<CD> CDs = new ArrayList<>();

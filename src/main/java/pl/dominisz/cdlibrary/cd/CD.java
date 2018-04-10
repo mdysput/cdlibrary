@@ -1,6 +1,7 @@
 package pl.dominisz.cdlibrary.cd;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import pl.dominisz.cdlibrary.Genre;
 import pl.dominisz.cdlibrary.TimeUtil;
@@ -15,6 +16,7 @@ import java.util.List;
  */
 @Getter
 @AllArgsConstructor
+@EqualsAndHashCode
 public class CD {
 
     private String title;
