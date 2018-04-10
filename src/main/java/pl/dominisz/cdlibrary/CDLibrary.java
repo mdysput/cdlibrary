@@ -8,6 +8,7 @@ import pl.dominisz.cdlibrary.track.TrackBuilder;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -54,7 +55,10 @@ public class CDLibrary {
         out.println(track.getTitle());
         out.println(track.getTime());
         out.println(track.getArtist());
-        out.println(track.getGenres());
+        String allGenres = track.getGenres().stream()
+                .map(genre -> genre.name())
+                .collect(Collectors.joining(";"));
+        out.println(allGenres);
     }
 
     public void loadFromFile(String filename) {
@@ -99,8 +103,15 @@ public class CDLibrary {
                 .setTitle(bufferedReader.readLine())
                 .setTime(Integer.parseInt(bufferedReader.readLine()))
                 .setArtist(bufferedReader.readLine())
-                .setGenre(Genre.valueOf(bufferedReader.readLine()))
+                .setGenres(createGenres(bufferedReader.readLine()))
                 .build();
+    }
+
+    private Set<Genre> createGenres(String genres) {
+        String[] elements = genres.split(";");
+        return Arrays.stream(elements)
+                .map(genre -> Genre.valueOf(genre))
+                .collect(Collectors.toSet());
     }
 
     public List<CD> getCDs() {
