@@ -79,14 +79,14 @@ public class CDLibraryTest {
 
     @Test
     void findByGenreShouldReturnOneCD() {
-        List<CD> result = cdLibrary.findByGenre(Genre.RAP);
+        List<CD> result = cdLibrary.findByGenre(Genre.BENGA);
         assertEquals(1, result.size());
-        assertTrue(result.get(0).getGenres().contains(Genre.RAP));
+        assertTrue(result.get(0).getGenres().contains(Genre.BENGA));
     }
 
     @Test
     void findByGenreShouldReturnEmptyList() {
-        List<CD> result = cdLibrary.findByGenre(Genre.BENGA);
+        List<CD> result = cdLibrary.findByGenre(Genre.AFRICAN_HEAVY_METAL);
         assertEquals(0, result.size());
     }
 
