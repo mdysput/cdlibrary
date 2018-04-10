@@ -10,8 +10,10 @@ import pl.dominisz.cdlibrary.track.TrackBuilder;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -53,8 +55,14 @@ public class CDLibraryTest {
                 .setTitle(elements[0])
                 .setTime(Integer.parseInt(elements[1]))
                 .setArtist(elements[2])
-                .setGenre(Genre.valueOf(elements[3]))
+                .setGenres(createGenres(elements[3]))
                 .build();
+    }
+
+    private Set<Genre> createGenres(String genres) {
+        return Arrays.stream(genres.split(","))
+                .map(Genre::valueOf)
+                .collect(Collectors.toSet());
     }
 
     private CD createCD(String cdDescription) {
