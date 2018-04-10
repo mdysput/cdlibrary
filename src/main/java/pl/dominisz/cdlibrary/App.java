@@ -30,7 +30,7 @@ public class App {
             System.out.println("4. Show all artists");
             System.out.println("5. Find CDs by title");
             System.out.println("5. Find tracks by title");
-            System.out.println("9. Exit");
+            System.out.println("6. Exit");
             int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1:
