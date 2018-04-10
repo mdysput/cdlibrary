@@ -10,8 +10,10 @@ import pl.dominisz.cdlibrary.track.TrackBuilder;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,13 +24,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class CDLibraryTest {
 
-    private static final String TRACK1 = "title1;100;artist1;RAP";
-    private static final String TRACK2 = "title2;200;artist2;RAP";
-    private static final String TRACK3 = "title3;300;artist3;RAP";
-    private static final String TRACK4 = "title4;400;artist4;RAP";
+    private static final String TRACK1 = "title1;100;artist1;RAP,ROCK";
+    private static final String TRACK2 = "title2;200;artist2;RAP,POP";
+    private static final String TRACK3 = "title3;300;artist3;RAP,JAZZ,BENGA";
+    private static final String TRACK4 = "title4;400;artist4;RAP,ROCK,POP,JAZZ";
 
-    private static final String CD1 = "title1;artist1;2000;producer1;RAP;true;1";
-    private static final String CD2 = "title2;artist2;2010;producer2;ROCK;false;2";
+    private static final String CD1 = "title1;artist1;2000;producer1;true;1";
+    private static final String CD2 = "title2;artist2;2010;producer2;false;2";
 
     private CDLibrary cdLibrary;
 
@@ -53,8 +55,14 @@ public class CDLibraryTest {
                 .setTitle(elements[0])
                 .setTime(Integer.parseInt(elements[1]))
                 .setArtist(elements[2])
-                .setGenre(Genre.valueOf(elements[3]))
+                .setGenres(createGenres(elements[3]))
                 .build();
+    }
+
+    private Set<Genre> createGenres(String genres) {
+        return Arrays.stream(genres.split(","))
+                .map(Genre::valueOf)
+                .collect(Collectors.toSet());
     }
 
     private CD createCD(String cdDescription) {
@@ -64,22 +72,21 @@ public class CDLibraryTest {
                 .setArtist(elements[1])
                 .setReleaseYear(Integer.parseInt(elements[2]))
                 .setProducer(elements[3])
-                .setGenre(Genre.valueOf(elements[4]))
-                .setIsOriginal("true".equals(elements[5]))
-                .setDiscCount(Integer.parseInt(elements[6]))
+                .setIsOriginal("true".equals(elements[4]))
+                .setDiscCount(Integer.parseInt(elements[5]))
                 .build();
     }
 
     @Test
     void findByGenreShouldReturnOneCD() {
-        List<CD> result = cdLibrary.findByGenre(Genre.RAP);
+        List<CD> result = cdLibrary.findByGenre(Genre.BENGA);
         assertEquals(1, result.size());
-        assertEquals(Genre.RAP, result.get(0).getGenre());
+        assertTrue(result.get(0).getGenres().contains(Genre.BENGA));
     }
 
     @Test
     void findByGenreShouldReturnEmptyList() {
-        List<CD> result = cdLibrary.findByGenre(Genre.BENGA);
+        List<CD> result = cdLibrary.findByGenre(Genre.AFRICAN_HEAVY_METAL);
         assertEquals(0, result.size());
     }
 
