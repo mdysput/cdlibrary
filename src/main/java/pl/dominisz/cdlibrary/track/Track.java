@@ -7,6 +7,10 @@ import lombok.Getter;
 import pl.dominisz.cdlibrary.Genre;
 import pl.dominisz.cdlibrary.TimeUtil;
 
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 /**
  * http://dominisz.pl
  * 05.04.2018
@@ -19,13 +23,19 @@ public class Track {
     private String title;
     private int time;
     private String artist;
-    private Genre genre;
+    private Set<Genre> genres;
 
     @Override
     public String toString() {
         return "Title: " + title +
                 ", time: " + TimeUtil.intTimeToString(time) +
                 ", artist: " + artist +
-                ", genre: " + genre.getDescription();
+                ", genres: " + getGenresDescription();
+    }
+
+    private String getGenresDescription() {
+        return genres.stream()
+                .map(Genre::getDescription)
+                .collect(Collectors.joining(", "));
     }
 }
