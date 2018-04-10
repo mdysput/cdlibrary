@@ -2,6 +2,9 @@ package pl.dominisz.cdlibrary.track;
 
 import pl.dominisz.cdlibrary.Genre;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * http://dominisz.pl
  * 05.04.2018
@@ -11,7 +14,7 @@ public class TrackBuilder {
     private String title;
     private int time;
     private String artist;
-    private Genre genre;
+    private Set<Genre> genres = new HashSet<>();
 
     public TrackBuilder setTitle(String title) {
         this.title = title;
@@ -29,11 +32,16 @@ public class TrackBuilder {
     }
 
     public TrackBuilder setGenre(Genre genre) {
-        this.genre = genre;
+        this.genres.add(genre);
+        return this;
+    }
+
+    public TrackBuilder setGenres(Set<Genre> genres) {
+        this.genres.addAll(genres);
         return this;
     }
 
     public Track build() {
-        return new Track(title, time, artist, genre);
+        return new Track(title, time, artist, genres);
     }
 }
