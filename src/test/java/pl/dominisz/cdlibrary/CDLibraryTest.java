@@ -64,7 +64,7 @@ public class CDLibraryTest {
                 .setArtist(elements[1])
                 .setReleaseYear(Integer.parseInt(elements[2]))
                 .setProducer(elements[3])
-                .setGenre(Genre.valueOf(elements[4]))
+                //.setGenre(Genre.valueOf(elements[4]))
                 .setIsOriginal("true".equals(elements[5]))
                 .setDiscCount(Integer.parseInt(elements[6]))
                 .build();

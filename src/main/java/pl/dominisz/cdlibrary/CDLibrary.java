@@ -78,7 +78,6 @@ public class CDLibrary {
                 .setArtist(bufferedReader.readLine())
                 .setReleaseYear(Integer.parseInt(bufferedReader.readLine()))
                 .setProducer(bufferedReader.readLine())
-                .setGenre(Genre.valueOf(bufferedReader.readLine()))
                 .setIsOriginal(Boolean.valueOf(bufferedReader.readLine()))
                 .setDiscCount(Integer.parseInt(bufferedReader.readLine()))
                 .setTracks(loadTracksFromFile(bufferedReader))

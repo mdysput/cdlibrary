@@ -46,7 +46,6 @@ public class CDReader {
                 .setArtist(author)
                 .setReleaseYear(releaseYear)
                 .setProducer(producer)
-                .setGenre(genre)
                 .setIsOriginal(original)
                 .setDiscCount(discCount)
                 .setTracks(tracks)
