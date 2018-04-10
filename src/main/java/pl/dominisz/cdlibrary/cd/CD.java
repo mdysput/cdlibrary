@@ -23,7 +23,6 @@ public class CD {
     private String artist;
     private int releaseYear;
     private String producer;
-    private Genre genre;
     private List<Track> tracks;
     private boolean original;
     private int discCount;
