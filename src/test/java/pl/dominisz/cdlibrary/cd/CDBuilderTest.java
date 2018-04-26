@@ -7,10 +7,6 @@ import pl.dominisz.cdlibrary.track.TrackBuilder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * http://dominisz.pl
- * 05.04.2018
- */
 public class CDBuilderTest {
 
     @Test

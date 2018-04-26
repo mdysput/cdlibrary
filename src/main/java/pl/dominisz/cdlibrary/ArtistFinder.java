@@ -7,10 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
-/**
- * http://dominisz.pl
- * 06.04.2018
- */
+
 public class ArtistFinder {
 
     private CDLibrary cdLibrary;

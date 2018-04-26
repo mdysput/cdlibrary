@@ -5,10 +5,6 @@ import pl.dominisz.cdlibrary.Genre;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * http://dominisz.pl
- * 05.04.2018
- */
 public class TrackBuilder {
 
     private String title;

@@ -5,13 +5,11 @@ import pl.dominisz.cdlibrary.track.Track;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-/**
- * http://dominisz.pl
- * 05.04.2018
- */
 public class CDBuilder {
 
+    private UUID uuid;
     private String title;
     private String artist;
     private int releaseYear;
@@ -19,6 +17,11 @@ public class CDBuilder {
     private boolean isOriginal;
     private int discCount;
     private List<Track> tracks = new ArrayList<>();
+
+    public CDBuilder setUUID(UUID uuid){
+        this.uuid=uuid;
+        return this;
+    }
 
     public CDBuilder setTitle(String title) {
         this.title = title;
@@ -60,7 +63,8 @@ public class CDBuilder {
         return this;
     }
 
+
     public CD build() {
-        return new CD(title, artist, releaseYear, producer, tracks, isOriginal, discCount);
+        return new CD(uuid, title, artist, releaseYear, producer, tracks, isOriginal, discCount);
     }
 }

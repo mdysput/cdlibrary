@@ -7,16 +7,9 @@ import pl.dominisz.cdlibrary.track.Track;
 import pl.dominisz.cdlibrary.track.TrackBuilder;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * http://dominisz.pl
- * 05.04.2018
- */
 public class CDLibrary {
 
     private List<CD> CDs = new ArrayList<>();
@@ -39,6 +32,7 @@ public class CDLibrary {
     }
 
     private void saveCDToFile(PrintWriter out, CD cd) {
+        out.println(cd.getUuid());
         out.println(cd.getTitle());
         out.println(cd.getArtist());
         out.println(cd.getReleaseYear());
@@ -78,6 +72,7 @@ public class CDLibrary {
 
     private void loadCDFromFile(BufferedReader bufferedReader) throws IOException {
         CD cd = new CDBuilder()
+                .setUUID(UUID.fromString(bufferedReader.readLine()))
                 .setTitle(bufferedReader.readLine())
                 .setArtist(bufferedReader.readLine())
                 .setReleaseYear(Integer.parseInt(bufferedReader.readLine()))
@@ -162,6 +157,11 @@ public class CDLibrary {
         return CDs.stream()
                 .filter(cd -> cd.getGenres().contains(genre))
                 .collect(Collectors.toList());
+    }
+
+    public Optional<CD>findByUUID(UUID uuid){
+        return CDs.stream().filter(cd -> cd.getUuid().equals(uuid))
+                .findFirst();
     }
 
 }

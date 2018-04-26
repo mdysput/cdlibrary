@@ -12,10 +12,7 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * http://dominisz.pl
- * 05.04.2018
- */
+
 public class CDTest {
 
     private static final int TRACK1_TIME = 100;

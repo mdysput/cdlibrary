@@ -7,21 +7,15 @@ import pl.dominisz.cdlibrary.Genre;
 import pl.dominisz.cdlibrary.TimeUtil;
 import pl.dominisz.cdlibrary.track.Track;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
-/**
- * http://dominisz.pl
- * 05.04.2018
- */
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode
 public class CD {
 
+    private UUID uuid;
     private String title;
     private String artist;
     private int releaseYear;
@@ -43,6 +37,7 @@ public class CD {
     @Override
     public String toString() {
         String result = "Title: " + title +
+                ", UUID" +uuid+
                 ", artist: " + artist +
                 ", release year: " + releaseYear +
                 ", producer: " + producer +

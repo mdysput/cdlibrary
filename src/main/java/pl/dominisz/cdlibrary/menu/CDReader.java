@@ -11,10 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
- * http://dominisz.pl
- * 06.04.2018
- */
+
 public class CDReader {
 
     private CDLibrary cdLibrary;

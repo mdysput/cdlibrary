@@ -10,18 +10,14 @@ import pl.dominisz.cdlibrary.track.TrackBuilder;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * http://dominisz.pl
- * 09.04.2018
- */
+
 public class CDLibraryTest {
 
     private static final String TRACK1 = "title1;100;artist1;RAP,ROCK";
@@ -29,8 +25,8 @@ public class CDLibraryTest {
     private static final String TRACK3 = "title3;300;artist3;RAP,JAZZ,BENGA";
     private static final String TRACK4 = "title4;400;artist4;RAP,ROCK,POP,JAZZ";
 
-    private static final String CD1 = "title1;artist1;2000;producer1;true;1";
-    private static final String CD2 = "title2;artist2;2010;producer2;false;2";
+    private static final String CD1 = "title1;artist1;2000;producer1;true;1;2c7357d1-4455-45b5-8291-d1d61ffc512e";
+    private static final String CD2 = "title2;artist2;2010;producer2;false;2;33613d7e-d401-4ed2-94c1-a41e00727bfa";
 
     private CDLibrary cdLibrary;
 
@@ -74,6 +70,7 @@ public class CDLibraryTest {
                 .setProducer(elements[3])
                 .setIsOriginal("true".equals(elements[4]))
                 .setDiscCount(Integer.parseInt(elements[5]))
+                .setUUID(UUID.fromString(elements[6]))
                 .build();
     }
 
@@ -95,7 +92,7 @@ public class CDLibraryTest {
         List<CD> result = cdLibrary.findCDByTrackTitle("tle3");
         assertEquals(1, result.size());
         assertTrue(result.get(0).getTracks().stream()
-            .anyMatch(track -> track.getTitle().toLowerCase().contains("tle3")));
+                .anyMatch(track -> track.getTitle().toLowerCase().contains("tle3")));
     }
 
     @Test
@@ -158,4 +155,19 @@ public class CDLibraryTest {
         assertEquals(newCD, newLibrary.getCDs().get(0));
     }
 
+    @Test
+    void shouldFindOneCDByUUID() {
+        UUID uuid = UUID.fromString("2c7357d1-4455-45b5-8291-d1d61ffc512e");
+        Optional<CD> optionalCd = cdLibrary.findByUUID(uuid);
+        assertTrue(optionalCd.isPresent());
+        assertEquals(uuid, optionalCd.get().getUuid());
+    }
+
+    @Test
+    void shouldFindNoneCDByUUID() {
+        UUID uuid = UUID.fromString("e3ae4284-2ada-4874-8ac9-557690434b5f");
+
+        Optional<CD> optionalCd = cdLibrary.findByUUID(uuid);
+        assertFalse(optionalCd.isPresent());
+    }
 }

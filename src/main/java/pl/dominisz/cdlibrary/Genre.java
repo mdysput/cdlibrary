@@ -1,9 +1,5 @@
 package pl.dominisz.cdlibrary;
 
-/**
- * http://dominisz.pl
- * 05.04.2018
- */
 public enum Genre {
 
     AFRICAN_HEAVY_METAL("african heavy metal"),

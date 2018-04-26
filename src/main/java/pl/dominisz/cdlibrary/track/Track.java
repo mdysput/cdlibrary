@@ -11,10 +11,7 @@ import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-/**
- * http://dominisz.pl
- * 05.04.2018
- */
+
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode

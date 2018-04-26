@@ -4,10 +4,6 @@ import pl.dominisz.cdlibrary.menu.CDDisplay;
 
 import java.util.Scanner;
 
-/**
- * http://dominisz.pl
- * 09.04.2018
- */
 public class TitleFinder {
 
     private CDLibrary cdLibrary;
